@@ -6,7 +6,7 @@ import LinearProgress, {
   linearProgressClasses
 } from '@mui/material/LinearProgress';
 
-import styles from './styles.module.css';
+import * as C from './styled';
 
 type Props = {
   textColor: string;
@@ -34,14 +34,14 @@ export const TechnologiesCard = ({
   }));
 
   return (
-    <div className={styles.container}>
-      <div className={styles.label} style={{ color: textColor }}>
+    <C.Container>
+      <C.Language color={textColor}>
         <p>{technology}</p>
         <span>{percentage}%</span>
-      </div>
+      </C.Language>
       <Box sx={{ flexGrow: 1 }}>
         <BorderLinearProgress variant="determinate" value={percentage} />
       </Box>
-    </div>
+    </C.Container>
   );
 };

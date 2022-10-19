@@ -1,5 +1,5 @@
 import React from 'react';
-import * as C from './styled'
+import * as C from './styled';
 
 import { TechnologiesCard } from '../TechnologiesCard';
 import { Button } from '../Button';
@@ -10,7 +10,7 @@ import { languages } from '../../libs/Languages';
 import { IdiomsDomain } from '../../libs/IdiomsDomain';
 
 import Image from 'next/image';
-import styles from './styles.module.css';
+import { AboutMe } from '../../libs/AboutMe';
 
 type Props = {
   darkMode: boolean;
@@ -18,29 +18,28 @@ type Props = {
 
 export const Aside = ({ darkMode }: Props) => {
   return (
-    <section
-      className={styles.aside}
-      style={{ backgroundColor: darkMode ? '' : '#010B40' }}
-    >
-      <div
-        className={styles.perfilFixed}
-        style={{ backgroundColor: darkMode ? '' : '#010B40' }}
-      >
-        <div className={styles.containerPerfil}>
-          <Image
-            src="/assets/perfil.png"
-            alt=""
-            width={180}
-            height={180}
-            className={styles.perfilImg}
-          />
-        </div>
+    <C.Container backgroundColor={darkMode ? '#060E26' : '#010B40'}>
+      <C.PerfilFixed backgroundColor={darkMode ? '#060E26' : '#010B40'}>
+        <C.ContainerPerfil>
+          <div>
+            <Image
+              src="/assets/perfil.png"
+              alt=""
+              width={180}
+              height={180}
+              style={{ borderRadius: '50%' }}
+              priority
+            />
+          </div>
+        </C.ContainerPerfil>
         <h3>Alan Junqueira</h3>
-        <h4 style={{ color: darkMode ? '#C5C6C7' : '#FCFDFF' }}>
+        <C.DeveloperFrontEnd
+          color={darkMode ? 'rgba(204, 204, 204, 0.5)' : '#FCFDFF'}
+        >
           Desenvolvedor Front End
-        </h4>
+        </C.DeveloperFrontEnd>
 
-        <div className={styles.socialMedia}>
+        <C.SocialMedia>
           <SocialLink
             icon="instagram"
             color={darkMode ? '#C5C6C7' : '#FCFDFF'}
@@ -58,61 +57,48 @@ export const Aside = ({ darkMode }: Props) => {
             icon="whatsapp"
             color={darkMode ? '#C5C6C7' : '#FCFDFF'}
           />
-        </div>
-      </div>
+        </C.SocialMedia>
+      </C.PerfilFixed>
 
-      <hr />
+      <C.Line />
 
-      <div className={styles.locationArea}>
-        <SocialInfo
-          backgroundColor="#F23827"
-          color={darkMode ? '#C5C6C7' : '#FCFDFF'}
-          label="Idade"
-          description="27"
-          fontSize='12px'
-        />
+      <C.AboutMeArea>
+        {AboutMe.map((about, index) => (
+          <SocialInfo
+            key={index}
+            backgroundColor="#F23827"
+            color={darkMode ? '#C5C6C7' : '#FCFDFF'}
+            label={about.label}
+            description={about.description}
+            fontSize="12px"
+          />
+        ))}
+      </C.AboutMeArea>
 
-        <SocialInfo
-          backgroundColor="#F23827"
-          color={darkMode ? '#C5C6C7' : '#FCFDFF'}
-          label="Residência"
-          description="Brasil"
-          fontSize='12px'
-        />
+      <C.Line />
 
-        <SocialInfo
-          backgroundColor="#F23827"
-          color={darkMode ? '#C5C6C7' : '#FCFDFF'}
-          label="Cidade"
-          description="Caldas Novas /GO"
-          fontSize='12px'
-        />
-      </div>
-
-      <hr />
-
-      <div className={styles.languages}>
-        <h2 style={{ color: darkMode ? '#C5C6C7' : '#FCFDFF' }}>Idiomas</h2>
-        <div className={styles.languagesCards}>
+      <C.Idioms color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
+        <h2>Idiomas</h2>
+        <C.IdomsCards>
           {IdiomsDomain.map((idiom, index) => (
             <IdiomsCard
-            key={index}
-            backgroundColor="#04BF68"
-            textColor={darkMode ? '#060E26' : '#FCFDFF'}
-            percentage={idiom.domain}
-            percentageColor="#F23827"
-            language={idiom.label}
-          />
+              key={index}
+              backgroundColor="#04BF68"
+              textColor={darkMode ? '#060E26' : '#FCFDFF'}
+              percentage={idiom.domain}
+              percentageColor="#F23827"
+              language={idiom.label}
+            />
           ))}
-        </div>
-      </div>
+        </C.IdomsCards>
+      </C.Idioms>
 
-      <hr />
+      <C.Line />
 
-      <div className={styles.technologies}>
-        <h2 style={{ color: darkMode ? '#C5C6C7' : '#FCFDFF' }}>Tecnologias</h2>
+      <C.Technologies color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
+        <h2>Tecnologias</h2>
 
-        <div className={styles.technologiesPercentage}>
+        <C.TechnologiesPercentage>
           {languages.map((language, index) => (
             <TechnologiesCard
               key={index}
@@ -122,19 +108,16 @@ export const Aside = ({ darkMode }: Props) => {
               technology={language.label}
             />
           ))}
-        </div>
+        </C.TechnologiesPercentage>
 
-        <div
-          className={styles.virtualCurriculum}
-          style={{ backgroundColor: darkMode ? '' : '#010B40' }}
-        >
+        <C.VirtualCurriculum backgroundColor={darkMode ? '#060E26' : '#010B40'}>
           <Button
             backgroundColor="#F23827"
             color="#010B40"
             label="Download CV"
           />
-        </div>
-      </div>
-    </section>
+        </C.VirtualCurriculum>
+      </C.Technologies>
+    </C.Container>
   );
 };

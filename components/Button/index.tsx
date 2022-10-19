@@ -30,9 +30,7 @@ export const Button = ({
       onClick={onClick}
       width={width}
       height={height}
-      style={{
-        borderColor: border ? border : '#bf0b2c',
-      }}
+      borderColor={border ? border : '#bf0b2c'}
     >
       {image === 'envelope' && (
         <Envelope size={30} weight="regular" color="#060E26" />

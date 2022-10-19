@@ -4,8 +4,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  /* background: linear-gradient(229deg, #383da5 0%, #3c1d7e 100%); */
-  background-color: #010B40;
+  background-color: #010b40;
   font-family: 'Inter', sans-serif;
 }
 

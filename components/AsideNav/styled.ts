@@ -17,7 +17,7 @@ export const Container = styled.div<ContainerProps>`
 
   transition: all ease 0.4s;
 
-  @media(min-width: 1100px) {
+  @media (min-width: 1100px) {
     display: none;
   }
 `;
@@ -45,7 +45,6 @@ export const AsideMenu = styled.aside<AsideMenuProps>`
       background-color: #3f3f40;
 
       border-radius: 8px;
-
     }
   }
 
@@ -55,7 +54,6 @@ export const AsideMenu = styled.aside<AsideMenuProps>`
     font-size: 12px;
     line-height: 15px;
     border-radius: 4px;
-
   }
 `;
 
@@ -98,4 +96,18 @@ export const Switcher = styled.div<SwitcherProps>`
   top: ${(props) => (props.menuOpen ? '10px' : '-100px')};
   right: ${(props) => (props.menuOpen ? '10px' : '-100px')};
   transition: all ease 0.4s;
+`;
+
+type ChangeLanguageProps = {
+  menuOpen: boolean;
+};
+
+export const ChangeLanguage = styled.div<ChangeLanguageProps>`
+  position: absolute;
+  bottom: ${(props) => (props.menuOpen ? '25px' : '-50px')};
+  right: 50px;
+  display: flex;
+  gap: 1rem;
+
+  transition: all ease 0.4s
 `;

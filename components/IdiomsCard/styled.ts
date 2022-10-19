@@ -50,6 +50,7 @@ export const CircularProgress = styled.div<CircularProgressProps>`
     opacity: 0.5;
 
     border: 2px solid ${(props) => props.textColor};
+    transition: all ease .3s;
   }
 
   p {
@@ -61,6 +62,7 @@ export const CircularProgress = styled.div<CircularProgressProps>`
     font-size: 10px;
     line-height: 8px;
     color: ${(props) => props.textColor};
+    transition: all ease .3s;
   }
 `;
 
@@ -82,4 +84,5 @@ export const Idiom = styled.p<IdiomProps>`
 
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.textColor};
+  transition: all ease .3s;
 `;

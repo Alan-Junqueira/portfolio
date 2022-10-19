@@ -57,12 +57,7 @@
   color: #04bf68;
 }
 
-.navbar ul li:hover {
-  color: rgba(4);
-}
-
 .homeContent {
-  background-color: #060e26;
   padding: 2rem;
   margin-top: 2rem;
 }
@@ -100,8 +95,8 @@
   line-height: 44px;
   /* identical to box height */
 
-  color: #c5c6c7;
   margin-bottom: 0.75rem;
+  transition: all ease 0.3s;
 }
 
 .main .welcome h1 {
@@ -109,20 +104,20 @@
   font-size: 42px;
   line-height: 51px;
 
-  color: #c5c6c7;
   margin-bottom: 1rem;
+  transition: all ease 0.3s;
 }
 
 .main .welcome h1 strong {
   font-weight: bold;
+  transition: all ease 0.3s;
 }
 
 .main .welcome h3 {
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;
-
-  color: #c5c6c7;
+  transition: all ease 0.3s;
 }
 
 .main .welcome h3 strong {
@@ -161,48 +156,12 @@
 }
 
 .technologiesCards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
-}
 
-@media (max-width: 1300px) {
-  .technologiesCards {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
+  display: flex;
+  justify-content: space-around;
 
-@media (max-width: 1050px) {
-  .technologiesCards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-left: 2rem;
-  }
-}
-
-@media (max-width: 960px) {
-  .technologiesCards {
-    margin-left: 1rem;
-  }
-}
-
-@media (max-width: 910px) {
-  .technologiesCards {
-    margin-left: 0.5rem;
-  }
-}
-
-@media (max-width: 845px) {
-  .technologiesCards {
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0;
-  }
-}
-
-.footer {
-  margin-top: 15rem;
-  color: #c5c6c7;
-  text-align: center;
+  flex-wrap: wrap;
 }
 
 .menuHamburger {
@@ -301,22 +260,4 @@
   height: 35px;
   padding: 5px;
   font-size: 12px;
-}
-
-.burgerMenuBackground {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  background-color: #3f3f40;
-  height: 50px;
-}
-
-.changeLanguageBackground {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  background-color: #3f3f40;
-  height: 125px;
 }

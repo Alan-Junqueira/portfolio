@@ -1,7 +1,6 @@
 import * as C from './styled';
 
 import React, { useState } from 'react';
-import { BurgerMenu } from '../BurgerMenu';
 import { DarkModeSwitcher } from '../DarkModeSwitcher';
 import Link from 'next/link';
 import {
@@ -13,8 +12,13 @@ import {
 } from 'phosphor-react';
 import { SocialInfo } from '../SocialInfo';
 
-export const AsideNav = () => {
-  const [menuOpen, setMenuOpen] = useState(true);
+type AsideNavProps = {
+  darkMode: boolean;
+  setDarkMode: (value: boolean) => void;
+};
+
+export const AsideNav = ({ darkMode, setDarkMode }: AsideNavProps) => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const teste = () => {
     if (document.querySelector('.mainContainer') === window.event?.srcElement) {
@@ -23,14 +27,14 @@ export const AsideNav = () => {
   };
 
   return (
-    <C.Container className="mainContainer" menuOpen={menuOpen} onClick={teste}>
+    <C.Container menuOpen={menuOpen} onClick={teste} className="mainContainer">
       <C.BurgerMenu menuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
         <div></div>
         <div></div>
         <div></div>
       </C.BurgerMenu>
       <C.Switcher menuOpen={menuOpen}>
-        <DarkModeSwitcher />
+        <DarkModeSwitcher darkMode={darkMode} setDarkMode={setDarkMode} />
       </C.Switcher>
       <C.AsideMenu menuOpen={menuOpen}>
         <ul>
