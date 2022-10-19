@@ -1,0 +1,209 @@
+.html {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 4px rgba(252, 73, 11, 0.5);
+
+  position: relative;
+  transition: all ease .3s;
+}
+
+.css {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(38, 77, 228, 0.5);
+
+  position: relative;
+  transition: all ease .3s;
+}
+
+.html span,
+.css span,
+.js span,
+.git span,
+.react span,
+.ts span,
+.next span,
+.node span,
+.gh span,
+.sass span {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.js {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(255, 222, 37, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+.git {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(221, 76, 53, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+.react {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(0, 216, 255, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+.ts {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(1, 122, 203, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+.next {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+.node {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(140, 200, 75, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+.gh {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+.sass {
+  max-width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: #3f3f40;
+  border-radius: 8px;
+  box-shadow: 4px 5px 5px rgba(236, 64, 122, 0.5);
+  position: relative;
+  transition: all ease .3s;
+}
+
+
+.html:hover {
+  opacity: .8;
+}
+
+.css:hover {
+  opacity: .8;
+}
+
+.js:hover {
+  opacity: .8;
+}
+
+.git:hover {
+  opacity: .8;
+}
+
+.react:hover {
+  opacity: .8;
+}
+
+.ts:hover {
+  opacity: .8;
+}
+
+.next:hover {
+  opacity: .8;
+}
+
+.node:hover {
+  opacity: .8;
+}
+
+.gh:hover {
+  opacity: .8;
+}
+
+.sass:hover {
+  opacity: .8;
+}

@@ -1,0 +1,136 @@
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 245px;
+  height: 100vh;
+  background-color: #060e26;
+
+  display: block;
+  padding: 350px 30px 120px 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.perfilFixed {
+  position: fixed;
+  top: 0px;
+  padding-top: 30px;
+
+  width: 180px;
+  height: 350px;
+  background-color: #060e26;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+
+.containerPerfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  border: 2.5px solid #04bf68;
+  border-radius: 50%;
+}
+
+.aside h3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #f23827;
+  margin-top: 1rem;
+}
+
+.aside h4 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  margin-top: 12px;
+
+  color: rgba(204, 204, 204, 0.5);
+}
+
+.perfilImg {
+  border-radius: 50%;
+}
+
+.socialMedia {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.aside hr {
+  border: 1px solid #727273;
+}
+
+.locationArea {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.75rem;
+}
+
+.virtualCurriculum {
+  width: 235px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #060e26;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.languages {
+  margin-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.languages h2 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1rem;
+  color: #c5c6c7;
+}
+
+.languagesCards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technologies {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  margin-top: 2rem;
+}
+
+.technologies h2 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1rem;
+  color: #c5c6c7;
+}
+
+.technologies .technologiesPercentage {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
