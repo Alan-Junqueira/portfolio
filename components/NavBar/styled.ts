@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
-export const Container = styled.nav`
+type ContainerProps = {
+  backgroundColor: string;
+  textColor: string;
+  hoverColor: string
+};
+
+export const Container = styled.nav<ContainerProps>`
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  background: #060e26;
-  border-radius: 8px;
+  background: ${(props) => props.backgroundColor};
+  border-radius: 1rem;
 
   @media (max-width: 1100px) {
     display: none;
@@ -23,10 +29,11 @@ export const Container = styled.nav`
     font-size: 20px;
     line-height: 24px;
 
-    color: rgba(4, 191, 104, 0.8);
+    color: ${(props) => props.textColor};
+    transition: all ease 0.3s;
 
     &:hover {
-      color: #04bf68;
+      color: ${(props) => props.hoverColor};
     }
   }
 `;

@@ -25,7 +25,7 @@ export const AsideNav = () => {
   };
 
   return (
-    <C.Container menuOpen={menuOpen} onClick={teste} className="mainContainer">
+    <C.Container menuOpen={menuOpen} onClick={teste} className="mainContainer" >
       <C.BurgerMenu menuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
         <div></div>
         <div></div>
@@ -34,7 +34,7 @@ export const AsideNav = () => {
       <C.Switcher menuOpen={menuOpen}>
         <DarkModeSwitcher />
       </C.Switcher>
-      <C.AsideMenu menuOpen={menuOpen}>
+      <C.AsideMenu menuOpen={menuOpen} backgroundColor={darkMode ? '#060e26' : '#010B40' }>
         <ul>
           <li>
             <Link href="/">

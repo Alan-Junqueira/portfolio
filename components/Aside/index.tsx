@@ -12,6 +12,7 @@ import { IdiomsDomain } from '../../libs/IdiomsDomain';
 import Image from 'next/image';
 import { AboutMe } from '../../libs/AboutMe';
 import { useDarkModeContext } from '../../contexts/DarkMode';
+import { CaretDoubleDown } from 'phosphor-react';
 
 export const Aside = () => {
   const { darkMode } = useDarkModeContext();
@@ -108,6 +109,10 @@ export const Aside = () => {
             />
           ))}
         </C.TechnologiesPercentage>
+
+        <C.ArrowDown>
+          <CaretDoubleDown size={32} color="#C5C6C7" />
+        </C.ArrowDown>
 
         <C.VirtualCurriculum backgroundColor={darkMode ? '#060E26' : '#010B40'}>
           <Button

@@ -7,7 +7,7 @@ export const IdiomsDomain: IdiomDomain[] = [
   },
   {
     label: "Inglês",
-    domain: 80
+    domain: 75
   },
   {
     label: "Espanhol",

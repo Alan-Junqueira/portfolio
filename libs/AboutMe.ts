@@ -11,6 +11,10 @@ export const AboutMe: AboutMeType[] = [
   },
   {
     label: 'Cidade',
-    description: 'Caldas Novas - GO'
+    description: 'Caldas Novas'
+  },
+  {
+    label: 'Estado',
+    description: 'Goias'
   }
 ];

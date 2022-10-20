@@ -24,10 +24,11 @@ export const Container = styled.div<ContainerProps>`
 
 type AsideMenuProps = {
   menuOpen: boolean;
+  backgroundColor: string;
 };
 
 export const AsideMenu = styled.aside<AsideMenuProps>`
-  background-color: #010b40;
+  background-color: ${(props) => props.backgroundColor};
   width: ${(props) => (props.menuOpen ? '200px' : '0')};
   height: 100vh;
 
@@ -109,5 +110,5 @@ export const ChangeLanguage = styled.div<ChangeLanguageProps>`
   display: flex;
   gap: 1rem;
 
-  transition: all ease 0.4s
+  transition: all ease 0.4s;
 `;

@@ -161,5 +161,26 @@ export const VirtualCurriculum = styled.div<VirtualCurriculumProps>`
   bottom: 0;
   left: 0;
 
-  transition: all ease .3s;
+  transition: all ease 0.3s;
+`;
+
+export const ArrowDown = styled.div`
+  position: fixed;
+  bottom: 90px;
+  left: 100px;
+  z-index: 10;
+  animation: changeOpacity 1s infinite;
+  background-color: rgba(0,0,0, .3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+
+  @keyframes changeOpacity {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.1;
+    }
+  }
 `;
