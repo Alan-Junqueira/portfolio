@@ -6,7 +6,6 @@ import { Button } from '../components/Button';
 import { useRouter } from 'next/router';
 import { TechnologyCard } from '../components/TechnologyCard';
 import { Aside } from '../components/Aside';
-import { useState } from 'react';
 import { languages } from '../libs/Languages';
 import { AsideNav } from '../components/AsideNav';
 import { NavBar } from '../components/NavBar';
@@ -16,11 +15,6 @@ import { Footer } from '../components/partials/Footer';
 const Home: NextPage = () => {
   const router = useRouter();
 
-  const [menuOpen, setMenuOpen] = useState(false);
-  const handleToggleSideMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   const { darkMode, setDarkMode } = useDarkModeContext();
 
   return (
@@ -28,15 +22,15 @@ const Home: NextPage = () => {
       <Head>
         <title>Home | Alan Junqueira</title>
       </Head>
-      <AsideNav darkMode={darkMode} setDarkMode={setDarkMode} />
+      <AsideNav />
 
       <div
         className={styles.container}
         style={{ backgroundColor: darkMode ? '#010B40' : '#C5C6C7' }}
       >
-        <Aside darkMode={darkMode} />
+        <Aside />
         <div className={styles.mainContainer}>
-          <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <NavBar />
 
           <main
             className={styles.homeContent}

@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
 import * as C from './styled';
 
 import { SwitcherMoon } from '../Svgs/SwitcherMoon';
 import { SwitcherSum } from '../Svgs/SwitcherSum';
+import { useDarkModeContext } from '../../contexts/DarkMode';
 
-type DarkModeSwitcherProps = {
-  darkMode: boolean;
-  setDarkMode: (value: boolean) => void;
-}
-
-export const DarkModeSwitcher = ({darkMode, setDarkMode}: DarkModeSwitcherProps) => {
+export const DarkModeSwitcher = () => {
+  const { darkMode, setDarkMode } = useDarkModeContext();
 
   const handleSwitcherClick = () => {
     setDarkMode(!darkMode);

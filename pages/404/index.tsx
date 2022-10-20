@@ -17,10 +17,10 @@ const NotFound = () => {
       </Head>
 
       <C.Container>
-        <AsideNav darkMode={darkMode} setDarkMode={setDarkMode} />
-        <Aside darkMode={darkMode} />
+        <AsideNav />
+        <Aside />
 
-        <NavBar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <NavBar />
         <h1>Erro 404 - Página não encontrada</h1>
         <Footer />
       </C.Container>

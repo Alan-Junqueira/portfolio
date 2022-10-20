@@ -11,12 +11,11 @@ import { IdiomsDomain } from '../../libs/IdiomsDomain';
 
 import Image from 'next/image';
 import { AboutMe } from '../../libs/AboutMe';
+import { useDarkModeContext } from '../../contexts/DarkMode';
 
-type Props = {
-  darkMode: boolean;
-};
+export const Aside = () => {
+  const { darkMode } = useDarkModeContext();
 
-export const Aside = ({ darkMode }: Props) => {
   return (
     <C.Container backgroundColor={darkMode ? '#060E26' : '#010B40'}>
       <C.PerfilFixed backgroundColor={darkMode ? '#060E26' : '#010B40'}>

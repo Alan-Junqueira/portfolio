@@ -11,13 +11,11 @@ import {
   Student
 } from 'phosphor-react';
 import { SocialInfo } from '../SocialInfo';
+import { useDarkModeContext } from '../../contexts/DarkMode';
 
-type AsideNavProps = {
-  darkMode: boolean;
-  setDarkMode: (value: boolean) => void;
-};
+export const AsideNav = () => {
+  const { darkMode, setDarkMode } = useDarkModeContext();
 
-export const AsideNav = ({ darkMode, setDarkMode }: AsideNavProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const teste = () => {
@@ -34,7 +32,7 @@ export const AsideNav = ({ darkMode, setDarkMode }: AsideNavProps) => {
         <div></div>
       </C.BurgerMenu>
       <C.Switcher menuOpen={menuOpen}>
-        <DarkModeSwitcher darkMode={darkMode} setDarkMode={setDarkMode} />
+        <DarkModeSwitcher />
       </C.Switcher>
       <C.AsideMenu menuOpen={menuOpen}>
         <ul>

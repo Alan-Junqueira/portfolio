@@ -5,13 +5,10 @@ import { LogoSvg } from '../Svgs/LogoSvg';
 import Link from 'next/link';
 import { DarkModeSwitcher } from '../DarkModeSwitcher';
 import { paths } from '../../libs/paths';
+import { useDarkModeContext } from '../../contexts/DarkMode';
 
-type NavBarProps = {
-  darkMode: boolean;
-  setDarkMode: (value: boolean) => void;
-};
-
-export const NavBar = ({ darkMode, setDarkMode }: NavBarProps) => {
+export const NavBar = () => {
+  const { darkMode, setDarkMode } = useDarkModeContext();
   return (
     <C.Container>
       <LogoSvg color="#F23827" />
@@ -24,7 +21,7 @@ export const NavBar = ({ darkMode, setDarkMode }: NavBarProps) => {
         ))}
       </ul>
       <div onClick={() => setDarkMode(!darkMode)}>
-        <DarkModeSwitcher darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <DarkModeSwitcher />
       </div>
     </C.Container>
   );
