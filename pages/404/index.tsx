@@ -5,7 +5,7 @@ import { AsideNav } from '../../components/AsideNav';
 import { NavBar } from '../../components/NavBar';
 import { Footer } from '../../components/partials/Footer';
 import { useDarkModeContext } from '../../contexts/DarkMode';
-import * as C from './styled';
+import * as C from '../../styles/404';
 
 const NotFound = () => {
   const { darkMode, setDarkMode } = useDarkModeContext();
