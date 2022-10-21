@@ -46,7 +46,7 @@ export const ExperienceCard = ({
             {company}.
           </C.Company>
           <C.Description color={darkMode ? '#c5c6c7' : '#FCFDFF'}>
-            - {description}
+            - {description}.
           </C.Description>
         </C.JobDescription>
       )}

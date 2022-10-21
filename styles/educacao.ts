@@ -12,7 +12,40 @@ export const Container = styled.div<ContainerProps>`
   }
 `;
 
-export const CertificatesContainer = styled.div`
+type EducationSectionProps = {
+  color: string;
+};
+
+export const EducationSection = styled.section<EducationSectionProps>`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  h2 {
+    color: ${(props) => props.color};
+    text-align: center;
+    transition: all ease 0.3s;
+  }
+
+  ul {
+    margin-left: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    color: ${(props) => props.color};
+
+    li {
+      list-style: circle;
+    }
+  }
+`;
+
+type CertificatesSectionProps = {
+  color: string;
+};
+
+export const CertificatesSection = styled.section<CertificatesSectionProps>`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -20,7 +53,7 @@ export const CertificatesContainer = styled.div`
   height: 100vh;
 
   @media (max-width: 1100px) {
-    padding: 0
+    padding: 0;
   }
 
   h2 {

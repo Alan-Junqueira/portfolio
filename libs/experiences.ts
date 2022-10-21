@@ -39,7 +39,7 @@ export const experiences: Experience[] = [
   {
     company: 'S.P.E Resort do Lago Caldas Novas Ltda',
     description:
-      'Liderei uma equipe de Promotores de Marketing, que no seu auge chegou a ter mais de 50 pessoas, nesse período, fazia toda parte de suporte, disponibilizando todo material necessário para uma boa execução do serviço, aos com menos experiência, cooperei para que se desenvolvessem na profissão pasasndo um pouco do meu conhecimento na área.',
+      'Liderei uma equipe de Promotores de Marketing, que no seu auge chegou a ter mais de 50 pessoas, nesse período, fazia toda parte de suporte, disponibilizando todo material necessário para uma boa execução do serviço, aos com menos experiência, cooperei para que se desenvolvessem na profissão pasasndo um pouco do meu conhecimento na área',
     role: 'Supervisor de Marketing',
     initialPeriod: 2015,
     endPeriod: 2020
@@ -47,7 +47,7 @@ export const experiences: Experience[] = [
   {
     company: 'Autônomo',
     description:
-      'Decidi mudar de área e trabalhar de maneira remota, visando liberdade de geolocalização, busquei experiência como editor, streamer, pro player de esports, em uma temporada(período de férias) voltei como Supervisor de Marketing e desde então estou estudando programação em busca de uma oportunidade.',
+      'Decidi mudar de área e trabalhar de maneira remota, visando liberdade de geolocalização, busquei experiência como editor, streamer, pro player de esports, em uma temporada(período de férias) voltei como Supervisor de Marketing e desde então estou estudando programação em busca de uma oportunidade',
     role: 'Autônomo - Atual',
     initialPeriod: 2021,
     endPeriod: 2022

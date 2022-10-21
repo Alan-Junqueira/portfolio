@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
@@ -6,24 +7,34 @@ import 'react-slideshow-image/dist/styles.css';
 import { Layout } from '../components/Layout';
 import { useDarkModeContext } from '../contexts/DarkMode';
 import * as C from '../styles/educacao';
+import { Certificate } from '../types/Certificate';
 
-const Educacao = () => {
+const Educacao = (data: Props) => {
   const { darkMode } = useDarkModeContext();
 
-  const images = [
-    { url: '/assets/certificado-db.jpg', alt: 'Certificado de Banco de Dados' },
-    { url: '/assets/certificado-next.jpg', alt: 'Certificado de Next Js' },
-    {
-      url: '/assets/certificado-typescript.jpg',
-      alt: 'Certificado de Typescript'
-    },
-    { url: '/assets/certificado-react.jpg', alt: 'Certificado de React Js' }
-  ];
+  const { images } = data;
 
   return (
     <Layout>
       <C.Container backgroundColor={darkMode ? '#060e26' : '#010B40'}>
-        <C.CertificatesContainer color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
+        <C.EducationSection color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
+          <h2>Escolaridade</h2>
+          <ul>
+            <li>
+              <p>Ensino Médio Completo</p>
+            </li>
+            <li>
+              <p>Curso de Inglês - Uptime (1 ano)</p>
+            </li>
+            <li>
+              <p>Cursos de Programação sem certificação</p>
+            </li>
+            <li>
+              <p>Faculdade na área de TI (Em breve)</p>
+            </li>
+          </ul>
+        </C.EducationSection>
+        <C.CertificatesSection color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
           <h2>Certificados</h2>
           <C.Slides>
             <Slide
@@ -46,10 +57,32 @@ const Educacao = () => {
               ))}
             </Slide>
           </C.Slides>
-        </C.CertificatesContainer>
+        </C.CertificatesSection>
       </C.Container>
     </Layout>
   );
 };
 
 export default Educacao;
+
+type Props = {
+  images: Certificate[];
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const images = [
+    { url: '/assets/certificado-db.jpg', alt: 'Certificado de Banco de Dados' },
+    { url: '/assets/certificado-next.jpg', alt: 'Certificado de Next Js' },
+    {
+      url: '/assets/certificado-typescript.jpg',
+      alt: 'Certificado de Typescript'
+    },
+    { url: '/assets/certificado-react.jpg', alt: 'Certificado de React Js' }
+  ];
+
+  return {
+    props: {
+      images
+    }
+  };
+};

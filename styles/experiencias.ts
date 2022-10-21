@@ -7,8 +7,8 @@ type ContainerProps = {
 
 export const Container = styled.div<ContainerProps>`
   background-color: ${(props) => props.backgroundColor};
-  padding: 1rem;
-  height: 100vh;
+  padding: 4rem 2rem;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -22,7 +22,6 @@ export const Container = styled.div<ContainerProps>`
   
 
   @media (max-width: 1100px) {
-    margin-top: 4rem;
     padding-inline: 3rem;
   }
 `;
