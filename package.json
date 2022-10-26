@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.10.9",
     "@types/styled-components": "^5.1.26",
     "emailjs": "^4.0.1",
