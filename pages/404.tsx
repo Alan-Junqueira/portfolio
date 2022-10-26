@@ -1,42 +1,36 @@
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import React, { ReactNode } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout } from '../src/components/Layout';
-import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { AboutMeType } from '../src/types/AboutMe';
 import * as C from '../styles/404';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const aboutMe = await fetch(
-    `${process.env.NEXT_PUBLIC_APIURL}/api/about-me`
-  ).then((res) => res.json());
+const NotFound = () => {
+  const [aboutMeData, setAboutMeData] = useState<AboutMeType>();
 
-  return {
-    props: {
-      aboutMe
-    }
+  useEffect(() => {
+    getAboutMeData();
+  }, []);
+
+  const getAboutMeData = async () => {
+    const aboutMe = await fetch(
+      `${process.env.NEXT_PUBLIC_APIURL}/api/about-me`
+    ).then((res) => res.json());
+
+    setAboutMeData(aboutMe);
   };
-};
-
-type Props = {
-  children: ReactNode;
-  aboutMe: AboutMeType;
-};
-
-const NotFound = ({ aboutMe }: Props) => {
-  const { darkMode, setDarkMode } = useDarkModeContext();
 
   return (
     <>
       <Head>
         <title>404 | Alan Junqueira</title>
       </Head>
-
-      <Layout aboutMe={aboutMe}>
-        <C.Container>
-          <h1>Erro 404 - Página não encontrada</h1>
-        </C.Container>
-      </Layout>
+      {aboutMeData && (
+        <Layout aboutMe={aboutMeData}>
+          <C.Container>
+            <h1>Erro 404 - Página não encontrada</h1>
+          </C.Container>
+        </Layout>
+      )}
     </>
   );
 };
