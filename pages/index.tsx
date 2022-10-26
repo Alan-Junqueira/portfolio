@@ -5,7 +5,6 @@ import styles from '../styles/Home.module.css';
 import { Button } from '../src/components/Button';
 import { useRouter } from 'next/router';
 import { TechnologyCard } from '../src/components/TechnologyCard';
-import { languages } from '../src/libs/Languages';
 import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { Layout } from '../src/components/Layout';
 import { ReactNode } from 'react';

@@ -2,7 +2,7 @@ import * as C from '../styles/contato';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Layout } from '../src/components/Layout';
 import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { GetServerSideProps } from 'next';

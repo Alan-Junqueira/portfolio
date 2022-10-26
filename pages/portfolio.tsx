@@ -1,6 +1,6 @@
 import * as C from '../styles/portfolio';
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { Layout } from '../src/components/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
