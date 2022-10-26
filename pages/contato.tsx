@@ -11,7 +11,7 @@ import { ReactForm } from '../src/components/ContactForm';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
-    `${process.env.NEXT_PUBLIC_APIURL}/api/about-me`
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/about-me`
   ).then((res) => res.json());
 
   return {
