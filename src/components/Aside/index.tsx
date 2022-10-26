@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import * as C from './styled';
+import { useDarkModeContext } from '../../contexts/DarkMode';
+import { CaretDoubleDown } from 'phosphor-react';
 
 import { TechnologiesCard } from '../TechnologiesCard';
 import { Button } from '../Button';
 import { IdiomsCard } from '../IdiomsCard';
 import { SocialInfo } from '../SocialInfo';
 import { SocialLink } from '../SocialLink';
-import { languages } from '../../libs/Languages';
-import { IdiomsDomain } from '../../libs/IdiomsDomain';
 
-import Image from 'next/image';
-import { AboutMe } from '../../libs/AboutMe';
-import { useDarkModeContext } from '../../contexts/DarkMode';
-import { CaretDoubleDown } from 'phosphor-react';
+import { IdiomDomain } from '../../types/IdiomsDomain';
+import { AboutMeType } from '../../types/AboutMe';
+import Link from 'next/link';
 
-export const Aside = () => {
+type AsideProps = {
+  aboutMe: AboutMeType;
+};
+
+export const Aside = ({ aboutMe }: AsideProps) => {
   const { darkMode } = useDarkModeContext();
 
   return (
@@ -28,11 +32,10 @@ export const Aside = () => {
               width={180}
               height={180}
               style={{ borderRadius: '50%' }}
-              priority
             />
           </div>
         </C.ContainerPerfil>
-        <h3>Alan Junqueira</h3>
+        <h3>{aboutMe.name}</h3>
         <C.DeveloperFrontEnd
           color={darkMode ? 'rgba(204, 204, 204, 0.5)' : '#FCFDFF'}
         >
@@ -63,7 +66,7 @@ export const Aside = () => {
       <C.Line />
 
       <C.AboutMeArea>
-        {AboutMe.map((about, index) => (
+        {aboutMe.informatinsAboutMe.map((about, index) => (
           <SocialInfo
             key={index}
             backgroundColor="#F23827"
@@ -80,14 +83,14 @@ export const Aside = () => {
       <C.Idioms color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
         <h2>Idiomas</h2>
         <C.IdomsCards>
-          {IdiomsDomain.map((idiom, index) => (
+          {aboutMe.idiomsDomain.map((idiom, index) => (
             <IdiomsCard
               key={index}
               backgroundColor="#04BF68"
               textColor={darkMode ? '#060E26' : '#FCFDFF'}
               percentage={idiom.domain}
               percentageColor="#F23827"
-              language={idiom.label}
+              language={idiom.idiom}
             />
           ))}
         </C.IdomsCards>
@@ -99,7 +102,7 @@ export const Aside = () => {
         <h2>Tecnologias</h2>
 
         <C.TechnologiesPercentage>
-          {languages.map((language, index) => (
+          {aboutMe.programingLanguages.map((language, index) => (
             <TechnologiesCard
               key={index}
               textColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
@@ -115,11 +118,21 @@ export const Aside = () => {
         </C.ArrowDown>
 
         <C.VirtualCurriculum backgroundColor={darkMode ? '#060E26' : '#010B40'}>
-          <Button
-            backgroundColor="#F23827"
-            color="#010B40"
-            label="Download CV"
-          />
+          <Link
+            href={
+              'https://drive.google.com/file/d/19w0k_S6aupTOMIjOBUJWboo0mwWun6Dr/view?usp=sharing'
+            }
+            passHref
+          >
+            <a target="_blank" rel="noopener noreferrer">
+              <Button
+                backgroundColor="#F23827"
+                color="#010B40"
+                label="Download CV"
+                width={200}
+              />
+            </a>
+          </Link>
         </C.VirtualCurriculum>
       </C.Technologies>
     </C.Container>

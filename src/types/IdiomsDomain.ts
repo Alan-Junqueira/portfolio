@@ -1,4 +1,4 @@
 export type IdiomDomain = {
-  label: string;
+  idiom: string;
   domain: number
 }

@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { useDarkModeContext } from '../../contexts/DarkMode';
+import { AboutMeType } from '../../types/AboutMe';
 import { Aside } from '../Aside';
 import { AsideNav } from '../AsideNav';
 import { NavBar } from '../NavBar';
@@ -8,14 +9,15 @@ import * as C from './styled';
 
 type LayoutProps = {
   children: ReactNode;
+  aboutMe: AboutMeType;
 };
 
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = ({ children, aboutMe }: LayoutProps) => {
   const { darkMode, setDarkMode } = useDarkModeContext();
 
   return (
     <>
-      <Aside />
+      <Aside aboutMe={aboutMe} />
       <AsideNav />
 
       <C.Container

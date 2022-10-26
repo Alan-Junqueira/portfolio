@@ -1,30 +1,45 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 
 import styles from '../styles/Home.module.css';
-import { Button } from '../components/Button';
+import { Button } from '../src/components/Button';
 import { useRouter } from 'next/router';
-import { TechnologyCard } from '../components/TechnologyCard';
-import { Aside } from '../components/Aside';
-import { languages } from '../libs/Languages';
-import { AsideNav } from '../components/AsideNav';
-import { NavBar } from '../components/NavBar';
-import { useDarkModeContext } from '../contexts/DarkMode';
-import { Footer } from '../components/partials/Footer';
-import { Layout } from '../components/Layout';
+import { TechnologyCard } from '../src/components/TechnologyCard';
+import { languages } from '../src/libs/Languages';
+import { useDarkModeContext } from '../src/contexts/DarkMode';
+import { Layout } from '../src/components/Layout';
+import { ReactNode } from 'react';
+import { AboutMeType } from '../src/types/AboutMe';
 
-const Home: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const aboutMe = await fetch(
+    `${process.env.NEXT_PUBLIC_APIURL}/api/about-me`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      aboutMe
+    }
+  };
+};
+
+type Props = {
+  children: ReactNode;
+  aboutMe: AboutMeType;
+};
+
+const Home = ({ aboutMe }: Props) => {
   const router = useRouter();
 
-  const { darkMode, setDarkMode } = useDarkModeContext();
+  const { darkMode } = useDarkModeContext();
 
   return (
     <>
       <Head>
-        <title>Home | Alan Junqueira</title>
+        <title>Home | {aboutMe.name}</title>
       </Head>
 
-      <Layout>
+      <Layout aboutMe={aboutMe}>
         <main
           className={styles.homeContent}
           style={{ backgroundColor: darkMode ? '#060e26' : '#010B40' }}
@@ -36,7 +51,7 @@ const Home: NextPage = () => {
                   Seja bem vindo!!!
                 </h2>
                 <h1 style={{ color: darkMode ? '#c5c6c7' : '#FCFDFF' }}>
-                  Sou <strong>Alan Junqueira</strong>
+                  Sou <strong>{aboutMe.name}</strong>
                 </h1>
                 <h3 style={{ color: darkMode ? '#c5c6c7' : '#FCFDFF' }}>
                   Desenvolvedor <strong> Front End</strong>
@@ -56,6 +71,7 @@ const Home: NextPage = () => {
                   image="envelope"
                   height={56}
                   onClick={() => router.push('/contato')}
+                  width={200}
                 />
               </div>
             </section>
@@ -64,10 +80,10 @@ const Home: NextPage = () => {
           <div className={styles.technologiesMain}>
             <h2>Minhas Habilidades</h2>
             <div className={styles.technologiesCards}>
-              {languages.map((language, index) => (
+              {aboutMe.programingLanguages.map((language, index) => (
                 <TechnologyCard
                   key={index}
-                  label={language.language}
+                  label={language.label}
                   color={language.mainColor}
                   backgroundColor={darkMode ? '#3F3F40' : '#FCFDFF'}
                 />

@@ -1,21 +1,37 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import Image from 'next/image';
+import { ReactNode } from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 // https://react-slideshow-image.netlify.app/?path=/docs/introduction--page
 
-import { Layout } from '../components/Layout';
-import { useDarkModeContext } from '../contexts/DarkMode';
+import { Layout } from '../src/components/Layout';
+import { useDarkModeContext } from '../src/contexts/DarkMode';
 import * as C from '../styles/educacao';
-import { Certificate } from '../types/Certificate';
+import { AboutMeType } from '../src/types/AboutMe';
 
-const Educacao = (data: Props) => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const aboutMe = await fetch(
+    `${process.env.NEXT_PUBLIC_APIURL}/api/about-me`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      aboutMe
+    }
+  };
+};
+
+type Props = {
+  children: ReactNode;
+  aboutMe: AboutMeType;
+};
+
+const Educacao = ({ aboutMe }: Props) => {
   const { darkMode } = useDarkModeContext();
 
-  const { images } = data;
-
   return (
-    <Layout>
+    <Layout aboutMe={aboutMe}>
       <C.Container backgroundColor={darkMode ? '#060e26' : '#010B40'}>
         <C.EducationSection color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
           <h2>Escolaridade</h2>
@@ -46,10 +62,10 @@ const Educacao = (data: Props) => {
               transitionDuration={500}
               infinite
             >
-              {images.map((image, index) => (
+              {aboutMe.certificates.map((image, index) => (
                 <Image
                   key={index}
-                  src={image.url}
+                  src={image.banner}
                   width={1080}
                   height={650}
                   alt={image.alt}
@@ -64,25 +80,3 @@ const Educacao = (data: Props) => {
 };
 
 export default Educacao;
-
-type Props = {
-  images: Certificate[];
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const images = [
-    { url: '/assets/certificado-db.jpg', alt: 'Certificado de Banco de Dados' },
-    { url: '/assets/certificado-next.jpg', alt: 'Certificado de Next Js' },
-    {
-      url: '/assets/certificado-typescript.jpg',
-      alt: 'Certificado de Typescript'
-    },
-    { url: '/assets/certificado-react.jpg', alt: 'Certificado de React Js' }
-  ];
-
-  return {
-    props: {
-      images
-    }
-  };
-};

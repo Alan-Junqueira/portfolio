@@ -1,36 +1,56 @@
 import * as C from '../styles/portfolio';
 
-import React, { useState } from 'react';
-import { Layout } from '../components/Layout';
+import React, { ReactNode, useState } from 'react';
+import { Layout } from '../src/components/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useDarkModeContext } from '../contexts/DarkMode';
-import { portfolios } from '../libs/portfolio';
+import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { GetServerSideProps } from 'next';
+import { AboutMeType } from '../src/types/AboutMe';
 
-const Portfolio = (data: Props) => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const aboutMe = await fetch(
+    `${process.env.NEXT_PUBLIC_APIURL}/api/about-me`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      aboutMe
+    }
+  };
+};
+
+type Props = {
+  children: ReactNode;
+  aboutMe: AboutMeType;
+};
+
+const Portfolio = ({ aboutMe }: Props) => {
   const { darkMode } = useDarkModeContext();
 
   return (
-    <Layout>
+    <Layout aboutMe={aboutMe}>
       <C.Container
         backgroundColor={darkMode ? '#060E26' : '#010B40'}
         color={darkMode ? '#C5C6C7' : '#FCFDFF'}
       >
         <h1>Portfólio</h1>
 
-        {portfolios.map((portfolio, index) => (
+        {aboutMe.portfolio.map((portfolio, index) => (
           <C.ImageContainer key={index}>
             <C.ArticleTitle color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
               {portfolio.projectName}
             </C.ArticleTitle>
-            <Image
-              src={portfolio.banner}
-              width={21}
-              height={9}
-              alt={portfolio.projectName}
-              layout="responsive"
-            />
+            <div>
+              <Image
+                src={portfolio.banner}
+                width={21}
+                height={9}
+                alt={portfolio.projectName}
+                layout="responsive"
+                priority
+              />
+            </div>
 
             <C.ImagesLinks color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
               <Link href={portfolio.ghLink} passHref>
@@ -52,24 +72,3 @@ const Portfolio = (data: Props) => {
 };
 
 export default Portfolio;
-
-type Props = {
-  portfoliosjson: JSON;
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const portfolios = await fetch('https://api.github.com/users/alan-junqueira');
-  const portfoliosjson = await portfolios.json();
-  const dados = [
-    {
-      nome: 'Alan Junqueira',
-      idade: 27
-    }
-  ];
-
-  return {
-    props: {
-      portfoliosjson
-    }
-  };
-};

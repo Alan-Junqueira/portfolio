@@ -1,4 +1,4 @@
-export type AboutMeType = {
+export type informatinsAboutMe = {
   label: string;
   description: string;
 }

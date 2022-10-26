@@ -16,6 +16,7 @@ export const Contaier = styled.button<ContainerProps>`
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 
   border: 1px solid ${(props) => props.borderColor};
@@ -25,7 +26,7 @@ export const Contaier = styled.button<ContainerProps>`
 
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
-  width: ${(props) => props.width};
+  width: ${(props) => props.width ? `${props.width}px` : '100%'};
   height: ${(props) => props.height};
 
   transition: all ease 0.3s;

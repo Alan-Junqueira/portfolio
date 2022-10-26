@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
 export type Language = {
-  language: string;
+  label: string;
+  name: string;
   description: string;
   mainColor: string;
   domain: number;
-  label: string;
 };

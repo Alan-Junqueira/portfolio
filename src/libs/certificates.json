@@ -1,0 +1,22 @@
+[
+  {
+    "banner": "/assets/portfolio/certificado-db.jpg",
+    "name": "Banco de Dados",
+    "alt": "Certificado de Banco de Dados"
+  },
+  {
+    "banner": "/assets/portfolio/certificado-db.jpg",
+    "name": "React Js",
+    "alt": "Certificado de React Js"
+  },
+  {
+    "banner": "/assets/portfolio/certificado-db.jpg",
+    "name": "Typescript",
+    "alt": "Certificado de Typescript"
+  },
+  {
+    "banner": "/assets/portfolio/certificado-db.jpg",
+    "name": "Next Js",
+    "alt": "Certificado de Next js"
+  }
+]
