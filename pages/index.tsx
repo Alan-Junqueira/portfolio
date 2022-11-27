@@ -1,18 +1,22 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+
 import styles from '../styles/Home.module.css';
 import { Button } from '../src/components/Button';
 import { useRouter } from 'next/router';
 import { TechnologyCard } from '../src/components/TechnologyCard';
 import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { Layout } from '../src/components/Layout';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { AboutMeType } from '../src/types/AboutMe';
+import { HomeCard } from '../src/components/HomeCard';
+import { SlideArrowsContainer, SliderHomeContainer } from '../styles/home';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
-    `https://portfolio-alan-junqueira.vercel.app//api/about-me`
+    `https://portfolio-alan-junqueira.vercel.app/api/about-me`
   ).then((res) => res.json());
 
   return {
@@ -31,6 +35,46 @@ const Home = ({ aboutMe }: Props) => {
   const router = useRouter();
 
   const { darkMode } = useDarkModeContext();
+
+  // Slides
+
+  const totalSlides = aboutMe.programingLanguages.length;
+  const totalSlidesWidth = totalSlides * 300;
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const [updateSliderMargin, setUpdateSliderMargin] = useState(0);
+
+  function goPrev() {
+    setCurrentSlide(currentSlide - 1);
+    if (currentSlide <= 1) {
+      setCurrentSlide(totalSlides - 1);
+    }
+
+    let slide = currentSlide - 1;
+    updateMargin(slide);
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  function goNext() {
+    setCurrentSlide(currentSlide + 1);
+    if (currentSlide >= totalSlides) {
+      setCurrentSlide(0);
+    }
+    let slide = currentSlide + 1;
+    updateMargin(slide);
+  }
+
+  function updateMargin(slide: number) {
+    let sliderItemWidth = 300;
+    let newMargin = slide * sliderItemWidth;
+
+    if (slide === 9) {
+      newMargin = 0;
+      setCurrentSlide(0);
+      setUpdateSliderMargin(newMargin);
+    } else {
+      setUpdateSliderMargin(newMargin);
+    }
+  }
 
   return (
     <>
@@ -77,17 +121,30 @@ const Home = ({ aboutMe }: Props) => {
           </div>
 
           <div className={styles.technologiesMain}>
+            <SlideArrowsContainer>
+              <span onClick={goPrev}>
+                <AiOutlineArrowLeft size={30} />
+              </span>
+              <span onClick={goNext}>
+                <AiOutlineArrowRight size={30} />
+              </span>
+            </SlideArrowsContainer>
             <h2>Minhas Habilidades</h2>
-            <div className={styles.technologiesCards}>
+            <SliderHomeContainer
+              id="slider-container"
+              totalSlides={totalSlidesWidth}
+              marginLeft={updateSliderMargin}
+            >
               {aboutMe.programingLanguages.map((language, index) => (
-                <TechnologyCard
+                <HomeCard
                   key={index}
                   label={language.label}
                   color={language.mainColor}
                   backgroundColor={darkMode ? '#3F3F40' : '#FCFDFF'}
+                  description={language.description}
                 />
               ))}
-            </div>
+            </SliderHomeContainer>
           </div>
         </main>
       </Layout>

@@ -26,7 +26,7 @@ type PerfilFixedProps = {
 };
 
 export const PerfilFixed = styled.div<PerfilFixedProps>`
-  position: fixed;
+  position: absolute;
   top: 0px;
   padding-top: 30px;
 

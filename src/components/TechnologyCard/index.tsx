@@ -1,6 +1,5 @@
 import styles from './styles.module.css';
 
-import React from 'react';
 import { HtmlLogo } from '../Svgs/Languages/HtmlLogo';
 import { CssLogo } from '../Svgs/Languages/CssLogo';
 import { JavascriptLogo } from '../Svgs/Languages/JavascriptLogo';

@@ -19,12 +19,12 @@ export const Layout = ({ children, aboutMe }: LayoutProps) => {
     <>
       <Aside aboutMe={aboutMe} />
       <AsideNav />
+      <NavBar />
 
       <C.Container
         backgroundColor={darkMode ? '#010B40' : '#C5C6C7'}
         backgroundMedia1100={darkMode ? '#060E26' : '#010B40'}
       >
-        <NavBar />
         <C.ChildrenDiv>{children}</C.ChildrenDiv>
         <Footer />
       </C.Container>
