@@ -39,7 +39,7 @@ const Portfolio = ({ aboutMe }: Props) => {
         {aboutMe.portfolio.map((portfolio, index) => (
           <C.ImageContainer key={index}>
             <C.ArticleTitle color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
-              {portfolio.projectName}
+              {portfolio.name}
             </C.ArticleTitle>
             <div>
               <Image

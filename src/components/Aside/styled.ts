@@ -19,6 +19,10 @@ export const Container = styled.section<ConteinerProps>`
   overflow-x: hidden;
 
   transition: all ease 0.3s;
+
+  @media(max-width: 768px) {
+    display: none;
+  }
 `;
 
 type PerfilFixedProps = {

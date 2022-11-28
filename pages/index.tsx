@@ -43,37 +43,39 @@ const Home = ({ aboutMe }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [updateSliderMargin, setUpdateSliderMargin] = useState(0);
+  console.log(currentSlide);
 
   function goPrev() {
-    setCurrentSlide(currentSlide - 1);
-    if (currentSlide <= 1) {
-      setCurrentSlide(totalSlides - 1);
+    if (currentSlide !== 0) {
+      setCurrentSlide(currentSlide - 1);
+      updateMargin(currentSlide - 1);
+    } else if (currentSlide === 0) {
+      setCurrentSlide(totalSlides - 2);
+      updateMargin(totalSlides - 2);
     }
-
-    let slide = currentSlide - 1;
-    updateMargin(slide);
   }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function goNext() {
     setCurrentSlide(currentSlide + 1);
-    if (currentSlide >= totalSlides) {
+    if (currentSlide > totalSlides) {
       setCurrentSlide(0);
     }
     let slide = currentSlide + 1;
-    updateMargin(slide);
+
+    if (slide >= totalSlides - 1) {
+      setCurrentSlide(0);
+      updateMargin(0);
+    } else {
+      updateMargin(slide);
+    }
   }
 
   function updateMargin(slide: number) {
     let sliderItemWidth = 300;
     let newMargin = slide * sliderItemWidth;
 
-    if (slide === 9) {
-      newMargin = 0;
-      setCurrentSlide(0);
-      setUpdateSliderMargin(newMargin);
-    } else {
-      setUpdateSliderMargin(newMargin);
-    }
+    console.log(newMargin);
+    setUpdateSliderMargin(newMargin);
   }
 
   return (
@@ -140,10 +142,16 @@ const Home = ({ aboutMe }: Props) => {
                   key={index}
                   label={language.label}
                   color={language.mainColor}
-                  backgroundColor={darkMode ? '#3F3F40' : '#FCFDFF'}
+                  backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
                   description={language.description}
                 />
               ))}
+              <HomeCard
+                label={aboutMe.programingLanguages[0].label}
+                color={aboutMe.programingLanguages[0].mainColor}
+                backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
+                description={aboutMe.programingLanguages[0].description}
+              />
             </SliderHomeContainer>
           </div>
         </main>

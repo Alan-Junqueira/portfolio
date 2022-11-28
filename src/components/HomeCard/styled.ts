@@ -1,25 +1,26 @@
 import styled from 'styled-components';
 
 interface IHomeCardContainer {
-  bgColor: string;
+  partialBgColor: string;
+  background?: string
 }
 
 export const HomeCardContainer = styled.div<IHomeCardContainer>`
   width: 300px;
   display: flex;
 
-  border: 3px solid ${(props) => props.bgColor};
+  border: 3px solid ${(props) => props.partialBgColor};
 
   flex-direction: column;
 
   border-radius: 8px;
   overflow: hidden;
 
-  background-color: #fcfdff;
+  background-color: ${props => props.background};
 
   > div:nth-child(1) {
     height: 100px;
-    background-color: ${(props) => props.bgColor};
+    background-color: ${(props) => props.partialBgColor};
 
     padding: 1rem;
   }

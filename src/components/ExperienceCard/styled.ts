@@ -5,7 +5,7 @@ export const Container = styled.dl`
   flex-direction: column;
   cursor: pointer;
   border-bottom: 1px solid #727273;
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
 `;
 
 type RoleProps = {
@@ -59,8 +59,8 @@ type CompanyTypes = {
 export const Company = styled.dd<CompanyTypes>`
   position: relative;
   display: block;
-  color: ${(props) => props.color};
-  text-decoration: underline;
+  color: #04bf68;
+  text-decoration: none;
   font-size: 1.2rem;
   margin-left: 1.5rem;
   margin-bottom: 0.5rem;
@@ -83,8 +83,12 @@ type DescriptionProps = {
 };
 
 export const Description = styled.dd<DescriptionProps>`
-font-size: .875rem;
+  font-size: 0.875rem;
   color: ${(props) => props.color};
   margin-left: 2rem;
   margin-right: 8rem;
+
+  @media (max-width: 900px) {
+    margin-inline: 2rem;
+  }
 `;

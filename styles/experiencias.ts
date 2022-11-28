@@ -9,20 +9,21 @@ export const Container = styled.div<ContainerProps>`
   background-color: ${(props) => props.backgroundColor};
   padding: 4rem 2rem;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
   > h2 {
     text-align: center;
-    color: ${props => props.color};
+    color: ${(props) => props.color};
     margin-bottom: 2rem;
   }
-  
 
   @media (max-width: 1100px) {
-    padding-inline: 3rem;
+    padding-inline: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding-inline: 1rem;
   }
 `;
 
@@ -34,16 +35,13 @@ export const Title = styled.dt<TitleProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   h2 {
     flex: 1;
     color: #f23827;
     text-decoration: ${(props) => (props.showInfo ? 'underline' : 'none')};
     font-size: 1.5rem;
-
     transition: all ease 0.3s;
   }
-
   small {
     color: #04bf68;
     font-size: 1rem;

@@ -25,8 +25,11 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const ArticleTitle = styled.h2`
-  margin-left: 1rem;
-  color: ${(props) => props.color};
+  /* margin-left: 1rem; */
+  max-width: fit-content;
+  background-image: linear-gradient(230deg, #04bf68, #bf0b2c, #f23827);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const ArticleSection = styled.article`
@@ -44,10 +47,14 @@ export const ImageContainer = styled.article`
   padding-bottom: 1rem;
   border-bottom: 1px solid #727273;
 
-  img {
+  div {
     border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  img {
     &:hover {
-      filter: opacity(0.8);
+      filter: opacity(0.9);
     }
   }
 `;

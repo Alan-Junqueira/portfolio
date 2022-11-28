@@ -8,6 +8,12 @@
   }
 }
 
+@media (max-width: 768px){
+  .homeContent {
+    padding: 1rem;
+  }
+}
+
 .main {
   display: flex;
 
@@ -48,6 +54,7 @@
 .main .welcome h1 strong {
   font-weight: bold;
   transition: all ease 0.3s;
+  white-space: nowrap;
 
   background-image: linear-gradient(230deg, #04bf68, #bf0b2c, #f23827);
   -webkit-background-clip: text;
@@ -63,6 +70,7 @@
 
 .main .welcome h3 strong {
   color: #f23827;
+  white-space: nowrap;
 }
 
 .main .welcome p {

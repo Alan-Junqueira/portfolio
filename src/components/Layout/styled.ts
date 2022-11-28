@@ -18,6 +18,10 @@ export const Container = styled.div<ContainerProps>`
     padding: 0 0 0 14.4rem;
     background-color: ${(props) => props.backgroundMedia1100};
   }
+
+  @media(max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 export const ChildrenDiv = styled.div`
