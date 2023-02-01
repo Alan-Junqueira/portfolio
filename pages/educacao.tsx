@@ -12,7 +12,7 @@ import { AboutMeType } from '../src/types/AboutMe';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
-    `https://portfolio-alan-junqueira.vercel.app//api/about-me`
+    `https://portfolio-alan-junqueira.vercel.app/api/about-me`
   ).then((res) => res.json());
 
   return {

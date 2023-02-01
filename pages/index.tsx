@@ -62,7 +62,7 @@ const Home = ({ aboutMe }: Props) => {
     }
     let slide = currentSlide + 1;
 
-    if (slide >= totalSlides - 1) {
+    if (slide >= totalSlides - 2) {
       setCurrentSlide(0);
       updateMargin(0);
     } else {
@@ -151,6 +151,12 @@ const Home = ({ aboutMe }: Props) => {
                 color={aboutMe.programingLanguages[0].mainColor}
                 backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
                 description={aboutMe.programingLanguages[0].description}
+              />
+              <HomeCard
+                label={aboutMe.programingLanguages[1].label}
+                color={aboutMe.programingLanguages[1].mainColor}
+                backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
+                description={aboutMe.programingLanguages[1].description}
               />
             </SliderHomeContainer>
           </div>

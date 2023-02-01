@@ -96,7 +96,7 @@ const ReactForm = () => {
 
         <textarea
           name="message"
-          placeholder="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo totam consectetur accusamus quas esse a eveniet, quae sunt expedita praesentium provident aspernatur nihil laborum voluptate pariatur eum et numquam. Voluptas."
+          placeholder="Deixe uma mensagem"
           rows={8}
           cols={50}
           value={message}

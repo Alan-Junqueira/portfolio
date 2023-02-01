@@ -27,11 +27,15 @@ const HomeCard = ({
   label,
   color,
   backgroundColor,
-  description,
+  description
 }: IHomeCard) => {
   return (
     <>
-      <HomeCardContainer partialBgColor={color} background={backgroundColor}>
+      <HomeCardContainer
+        partialBgColor={color}
+        background={backgroundColor}
+        draggable
+      >
         <div></div>
         <CardLogo borderColor={color}>
           <div>

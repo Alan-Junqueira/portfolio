@@ -9,7 +9,7 @@ import { ReactForm } from '../src/components/ContactForm';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
-    `https://portfolio-alan-junqueira.vercel.app//api/about-me`
+    `https://portfolio-alan-junqueira.vercel.app/api/about-me`
   ).then((res) => res.json());
 
   return {
@@ -26,7 +26,6 @@ type Props = {
 
 const Contato = ({ aboutMe }: Props) => {
   const { darkMode } = useDarkModeContext();
-
 
   return (
     <Layout aboutMe={aboutMe}>
