@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { GetServerSideProps } from 'next';
 
 import * as C from '../styles/experiencias';
@@ -6,9 +6,9 @@ import * as C from '../styles/experiencias';
 import { useDarkModeContext } from '../src/contexts/DarkMode';
 
 import { Layout } from '../src/components/Layout';
-import { ExperienceCard } from '../src/components/ExperienceCard';
 
 import { AboutMeType } from '../src/types/AboutMe';
+import { ExperiencesAccordion } from '../src/components/ExperiencesAccordion';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
@@ -29,6 +29,15 @@ type Props = {
 
 const Experiencias = ({ aboutMe }: Props) => {
   const { darkMode } = useDarkModeContext();
+  const [expandedActive, setExpandedActive] = useState('panel1');
+
+  const handleAccordionClick = (accordion: string) => {
+    if (accordion === expandedActive) {
+      setExpandedActive('');
+    } else {
+      setExpandedActive(accordion);
+    }
+  };
 
   return (
     <Layout aboutMe={aboutMe}>
@@ -38,13 +47,16 @@ const Experiencias = ({ aboutMe }: Props) => {
       >
         <h2>Experiências Profissionais</h2>
         {aboutMe.profissionalExperiences.map((experience, index) => (
-          <ExperienceCard
+          <ExperiencesAccordion
             key={index}
             initialPeriod={experience.initialPeriod}
             endPeriod={experience.endPeriod}
             company={experience.company}
             role={experience.role}
             description={experience.description}
+            panel={`panel${index + 1}`}
+            onClick={() => handleAccordionClick(`panel${index + 1}`)}
+            expandedActive={expandedActive}
           />
         ))}
       </C.Container>

@@ -6,7 +6,8 @@ interface IHomeCardContainer {
 }
 
 export const HomeCardContainer = styled.div<IHomeCardContainer>`
-  width: 300px;
+  width: 100%;
+  height: 100%;
   display: flex;
 
   border: 3px solid ${(props) => props.partialBgColor};

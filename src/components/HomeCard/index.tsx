@@ -16,7 +16,7 @@ import {
   DescriptionCardContainer
 } from './styled';
 
-interface IHomeCard {
+interface IHomeCard extends React.HTMLAttributes<HTMLDivElement> {
   label: string;
   color: string;
   backgroundColor?: string;
@@ -27,10 +27,11 @@ const HomeCard = ({
   label,
   color,
   backgroundColor,
-  description
+  description,
+  ...props
 }: IHomeCard) => {
   return (
-    <>
+    <div {...props}>
       <HomeCardContainer
         partialBgColor={color}
         background={backgroundColor}
@@ -58,7 +59,7 @@ const HomeCard = ({
           <button>Veja Mais</button>
         </DescriptionCardContainer>
       </HomeCardContainer>
-    </>
+    </div>
   );
 };
 

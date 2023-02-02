@@ -1,56 +1,73 @@
 import styled from 'styled-components';
 
-interface ISliderHomeContainer {
-  totalSlides: number;
-  marginLeft: number;
-}
-
-export const SliderHomeContainer = styled.div<ISliderHomeContainer>`
+export const SliderHomeContainer = styled.div`
   display: flex;
-  gap: 1rem;
-  width: 100%;
   transition: all ease 0.3s;
-  width: ${(props) => props.totalSlides}px;
-
-  margin-left: -${(props) => props.marginLeft}px;
 `;
 
 export const SlideArrowsContainer = styled.div`
   position: absolute;
-  width: calc(calc(100vw - 405px));
+  width: calc(100% - 30px);
   left: 15px;
-  top: 50%;
+  top: 45%;
   display: flex;
   justify-content: space-between;
 
-  span {
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-
-    transition: all ease 0.3s;
-
-    border: 1px solid black;
-
-    opacity: 0.3;
-
-    cursor: pointer;
-
-    &:hover {
-      background-color:#FFF;
-      opacity: 0.7;
-    }
-  }
-
-  @media (max-width: 1100px){
+  @media (max-width: 1100px) {
     width: calc(calc(100vw - 340px));
   }
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     width: calc(calc(100vw - 60px));
+  }
+`;
+
+export const SliderArrow = styled.div`
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  padding: 0.5rem;
+
+  transition: all ease 0.3s;
+
+  border: 1px solid black;
+
+  opacity: 0.3;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    opacity: 0.7;
+  }
+`;
+
+export const SliderDots = styled.div`
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+`;
+
+export const SliderDot = styled.button`
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.active {
+    background: #000;
   }
 `;

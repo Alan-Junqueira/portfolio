@@ -1,18 +1,26 @@
 import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
+
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 import styles from '../styles/Home.module.css';
 import { Button } from '../src/components/Button';
 import { useRouter } from 'next/router';
-import { TechnologyCard } from '../src/components/TechnologyCard';
 import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { Layout } from '../src/components/Layout';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { AboutMeType } from '../src/types/AboutMe';
 import { HomeCard } from '../src/components/HomeCard';
-import { SlideArrowsContainer, SliderHomeContainer } from '../styles/home';
+import {
+  SlideArrowsContainer,
+  SliderArrow,
+  SliderDot,
+  SliderDots,
+  SliderHomeContainer
+} from '../styles/home';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
@@ -33,50 +41,37 @@ type Props = {
 
 const Home = ({ aboutMe }: Props) => {
   const router = useRouter();
-
   const { darkMode } = useDarkModeContext();
 
-  // Slides
-
-  const totalSlides = aboutMe.programingLanguages.length;
-  const totalSlidesWidth = totalSlides * 300;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
-  const [updateSliderMargin, setUpdateSliderMargin] = useState(0);
-  console.log(currentSlide);
-
-  function goPrev() {
-    if (currentSlide !== 0) {
-      setCurrentSlide(currentSlide - 1);
-      updateMargin(currentSlide - 1);
-    } else if (currentSlide === 0) {
-      setCurrentSlide(totalSlides - 2);
-      updateMargin(totalSlides - 2);
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
+    loop: true,
+    mode: 'free-snap',
+    slides: {
+      perView: 1,
+      spacing: 15
+    },
+    breakpoints: {
+      '(min-width: 425px)': {
+        slides: { perView: 2, spacing: 15 }
+      },
+      '(min-width: 1024px)': {
+        slides: { perView: 3, spacing: 15 }
+      },
+      '(min-width: 1440px)': {
+        slides: { perView: 4, spacing: 15 }
+      }
     }
-  }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  function goNext() {
-    setCurrentSlide(currentSlide + 1);
-    if (currentSlide > totalSlides) {
-      setCurrentSlide(0);
-    }
-    let slide = currentSlide + 1;
-
-    if (slide >= totalSlides - 2) {
-      setCurrentSlide(0);
-      updateMargin(0);
-    } else {
-      updateMargin(slide);
-    }
-  }
-
-  function updateMargin(slide: number) {
-    let sliderItemWidth = 300;
-    let newMargin = slide * sliderItemWidth;
-
-    console.log(newMargin);
-    setUpdateSliderMargin(newMargin);
-  }
+  });
 
   return (
     <>
@@ -123,42 +118,62 @@ const Home = ({ aboutMe }: Props) => {
           </div>
 
           <div className={styles.technologiesMain}>
-            <SlideArrowsContainer>
-              <span onClick={goPrev}>
-                <AiOutlineArrowLeft size={30} />
-              </span>
-              <span onClick={goNext}>
-                <AiOutlineArrowRight size={30} />
-              </span>
-            </SlideArrowsContainer>
             <h2>Minhas Habilidades</h2>
-            <SliderHomeContainer
-              id="slider-container"
-              totalSlides={totalSlidesWidth}
-              marginLeft={updateSliderMargin}
-            >
-              {aboutMe.programingLanguages.map((language, index) => (
-                <HomeCard
-                  key={index}
-                  label={language.label}
-                  color={language.mainColor}
-                  backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
-                  description={language.description}
-                />
-              ))}
-              <HomeCard
-                label={aboutMe.programingLanguages[0].label}
-                color={aboutMe.programingLanguages[0].mainColor}
-                backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
-                description={aboutMe.programingLanguages[0].description}
-              />
-              <HomeCard
-                label={aboutMe.programingLanguages[1].label}
-                color={aboutMe.programingLanguages[1].mainColor}
-                backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
-                description={aboutMe.programingLanguages[1].description}
-              />
-            </SliderHomeContainer>
+
+            <div style={{ position: 'relative' }}>
+              <SliderHomeContainer ref={sliderRef} className="keen-slider">
+                {aboutMe.programingLanguages.map((language, index) => (
+                  <HomeCard
+                    key={index}
+                    label={language.label}
+                    color={language.mainColor}
+                    backgroundColor={darkMode ? '#C5C6C7' : '#FCFDFF'}
+                    description={language.description}
+                    className={`keen-slider__slide`}
+                  />
+                ))}
+              </SliderHomeContainer>
+              {loaded && instanceRef.current && (
+                <SlideArrowsContainer>
+                  <SliderArrow>
+                    <AiOutlineArrowLeft
+                      size={24}
+                      onClick={(e: any) =>
+                        e.stopPropagation() || instanceRef.current?.prev()
+                      }
+                    />
+                  </SliderArrow>
+
+                  <SliderArrow>
+                    <AiOutlineArrowRight
+                      size={24}
+                      onClick={(e: any) =>
+                        e.stopPropagation() || instanceRef.current?.next()
+                      }
+                    />
+                  </SliderArrow>
+                </SlideArrowsContainer>
+              )}
+            </div>
+            {loaded && instanceRef.current && (
+              <SliderDots className="dots">
+                {[
+                  ...Array(
+                    instanceRef.current.track.details.slides.length
+                  ).keys()
+                ].map((idx) => {
+                  return (
+                    <SliderDot
+                      key={idx}
+                      onClick={() => {
+                        instanceRef.current?.moveToIdx(idx);
+                      }}
+                      className={currentSlide === idx ? 'active' : ''}
+                    ></SliderDot>
+                  );
+                })}
+              </SliderDots>
+            )}
           </div>
         </main>
       </Layout>

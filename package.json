@@ -17,6 +17,7 @@
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.26",
     "emailjs": "^4.0.1",
+    "keen-slider": "^6.8.5",
     "next": "12.3.1",
     "phosphor-react": "^1.4.1",
     "react": "18.2.0",
