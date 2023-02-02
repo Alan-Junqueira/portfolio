@@ -48,7 +48,7 @@ const Portfolio = ({ aboutMe }: Props) => {
                 height={9}
                 alt={portfolio.projectName}
                 layout="responsive"
-                
+                priority
               />
             </div>
 
