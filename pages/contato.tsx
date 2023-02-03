@@ -6,6 +6,7 @@ import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { GetServerSideProps } from 'next';
 import { AboutMeType } from '../src/types/AboutMe';
 import { ReactForm } from '../src/components/ContactForm';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
@@ -28,15 +29,20 @@ const Contato = ({ aboutMe }: Props) => {
   const { darkMode } = useDarkModeContext();
 
   return (
-    <Layout aboutMe={aboutMe}>
-      <C.Container
-        backgroundColor={darkMode ? '#060E26' : '#010B40'}
-        color={darkMode ? '#C5C6C7' : '#FCFDFF'}
-      >
-        <h1>Contato</h1>
-        <ReactForm />
-      </C.Container>
-    </Layout>
+    <>
+      <Head>
+        <title>Contato | Alan Junqueira</title>
+      </Head>
+      <Layout aboutMe={aboutMe}>
+        <C.Container
+          backgroundColor={darkMode ? '#060E26' : '#010B40'}
+          color={darkMode ? '#C5C6C7' : '#FCFDFF'}
+        >
+          <h1>Contato</h1>
+          <ReactForm />
+        </C.Container>
+      </Layout>
+    </>
   );
 };
 

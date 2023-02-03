@@ -13,7 +13,7 @@ type LayoutProps = {
 };
 
 export const Layout = ({ children, aboutMe }: LayoutProps) => {
-  const { darkMode, setDarkMode } = useDarkModeContext();
+  const { darkMode } = useDarkModeContext();
 
   return (
     <>

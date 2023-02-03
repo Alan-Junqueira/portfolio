@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useDarkModeContext } from '../src/contexts/DarkMode';
 import { GetServerSideProps } from 'next';
 import { AboutMeType } from '../src/types/AboutMe';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
@@ -29,45 +30,50 @@ const Portfolio = ({ aboutMe }: Props) => {
   const { darkMode } = useDarkModeContext();
 
   return (
-    <Layout aboutMe={aboutMe}>
-      <C.Container
-        backgroundColor={darkMode ? '#060E26' : '#010B40'}
-        color={darkMode ? '#C5C6C7' : '#FCFDFF'}
-      >
-        <h1>Portfólio</h1>
+    <>
+      <Head>
+        <title>Portfolio | Alan Junqueira</title>
+      </Head>
+      <Layout aboutMe={aboutMe}>
+        <C.Container
+          backgroundColor={darkMode ? '#060E26' : '#010B40'}
+          color={darkMode ? '#C5C6C7' : '#FCFDFF'}
+        >
+          <h1>Portfólio</h1>
 
-        {aboutMe.portfolio.map((portfolio, index) => (
-          <C.ImageContainer key={index}>
-            <C.ArticleTitle color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
-              {portfolio.name}
-            </C.ArticleTitle>
-            <div>
-              <Image
-                src={portfolio.banner}
-                width={21}
-                height={9}
-                alt={portfolio.projectName}
-                layout="responsive"
-                priority
-              />
-            </div>
+          {aboutMe.portfolio.map((portfolio, index) => (
+            <C.ImageContainer key={index}>
+              <C.ArticleTitle color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
+                {portfolio.name}
+              </C.ArticleTitle>
+              <div>
+                <Image
+                  src={portfolio.banner}
+                  width={21}
+                  height={9}
+                  alt={portfolio.projectName}
+                  layout="responsive"
+                  priority
+                />
+              </div>
 
-            <C.ImagesLinks color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
-              <Link href={portfolio.ghLink} passHref>
-                <a target="_blank" rel="noopener noreferrer">
-                  Git Hub
-                </a>
-              </Link>
-              <Link href={portfolio.siteLink} passHref>
-                <a target="_blank" rel="noopener noreferrer">
-                  Site
-                </a>
-              </Link>
-            </C.ImagesLinks>
-          </C.ImageContainer>
-        ))}
-      </C.Container>
-    </Layout>
+              <C.ImagesLinks color={darkMode ? '#C5C6C7' : '#FCFDFF'}>
+                <Link href={portfolio.ghLink} passHref>
+                  <a target="_blank" rel="noopener noreferrer">
+                    Git Hub
+                  </a>
+                </Link>
+                <Link href={portfolio.siteLink} passHref>
+                  <a target="_blank" rel="noopener noreferrer">
+                    Site
+                  </a>
+                </Link>
+              </C.ImagesLinks>
+            </C.ImageContainer>
+          ))}
+        </C.Container>
+      </Layout>
+    </>
   );
 };
 
