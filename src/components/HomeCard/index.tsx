@@ -30,6 +30,18 @@ const HomeCard = ({
   description,
   ...props
 }: IHomeCard) => {
+  let links: any = {
+    html: 'https://developer.mozilla.org/pt-BR/docs/Web/HTML',
+    css: 'https://developer.mozilla.org/pt-BR/docs/Web/CSS',
+    javascript: 'https://developer.mozilla.org/pt-BR/docs/Web/JavaScript',
+    git: 'https://git-scm.com/',
+    reactjs: 'https://reactjs.org/',
+    typescript: 'https://www.typescriptlang.org/',
+    nextjs: 'https://nextjs.org/',
+    nodejs: 'https://nodejs.org/en/',
+    github: 'https://github.com/',
+    sass: 'https://sass-lang.com/'
+  };
   return (
     <div {...props}>
       <HomeCardContainer
@@ -56,7 +68,12 @@ const HomeCard = ({
           <span>{label.toUpperCase()}</span>
           <p>{description}</p>
 
-          <button>Veja Mais</button>
+          <button>
+            <a target="_blank" href={links[`${label}`]} rel="noreferrer">
+              {' '}
+              Veja Mais
+            </a>
+          </button>
         </DescriptionCardContainer>
       </HomeCardContainer>
     </div>
