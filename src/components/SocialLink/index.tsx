@@ -19,7 +19,7 @@ export const SocialLink = ({ icon, color }: Props) => {
       {icon === 'instagram' && (
         <C.Container
           target={'_blank'}
-          href={'https://www.instagram.com/allann.junnkh/'}
+          href={'https://www.instagram.com/_alanjunqueira/'}
         >
           <InstagramLogo color={color} />
         </C.Container>
@@ -42,16 +42,17 @@ export const SocialLink = ({ icon, color }: Props) => {
         </C.Container>
       )}
       {icon === 'twitter' && (
-        <C.Container target={'_blank'} href={'https://twitter.com/yaohuram'}>
+        <C.Container
+          target={'_blank'}
+          href={'https://twitter.com/_alanjunqueira'}
+        >
           <TwitterLogo color={color} />
         </C.Container>
       )}
       {icon === 'whatsapp' && (
         <C.Container
           target={'_blank'}
-          href={
-            'https://api.whatsapp.com/message/ZX4Q6ANGVS42I1?autoload=1&app_absent=0'
-          }
+          href={'https://api.whatsapp.com/send?phone=5564992391327'}
         >
           <WhatsappLogo color={color} />
         </C.Container>

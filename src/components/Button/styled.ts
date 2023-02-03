@@ -32,6 +32,6 @@ export const Contaier = styled.button<ContainerProps>`
   transition: all ease 0.3s;
 
   &:hover {
-    opacity: 0.8;
+    filter: brightness(1.2)
   }
 `;

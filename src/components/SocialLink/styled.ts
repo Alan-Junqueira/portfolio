@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.a`
-  background-color: #f23827;
+  background-color: rgb(242, 56, 39);
   padding: 0.25rem;
   width: 1.75rem;
   height: 1.75rem;
@@ -11,6 +11,6 @@ export const Container = styled.a`
   border-radius: 50%;
 
   &:hover {
-    opacity: 0.8;
+    filter: brightness(1.2);
   }
 `;

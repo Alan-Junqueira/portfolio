@@ -120,7 +120,7 @@ export const Aside = ({ aboutMe }: AsideProps) => {
         <C.VirtualCurriculum backgroundColor={darkMode ? '#060E26' : '#010B40'}>
           <Link
             href={
-              'https://drive.google.com/file/d/19w0k_S6aupTOMIjOBUJWboo0mwWun6Dr/view?usp=sharing'
+              'https://drive.google.com/file/d/1wGcmd3ldPBWolKSIn0tgJt2mDCnJvXdR/view?usp=sharing'
             }
             passHref
           >

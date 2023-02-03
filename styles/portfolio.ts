@@ -29,6 +29,7 @@ export const ArticleTitle = styled.h2`
   max-width: fit-content;
   background-image: linear-gradient(230deg, #04bf68, #bf0b2c, #f23827);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
@@ -53,6 +54,7 @@ export const ImageContainer = styled.article`
   }
 
   img {
+    transition: all ease .3s;
     &:hover {
       filter: opacity(0.9);
     }
@@ -77,8 +79,10 @@ export const ImagesLinks = styled.div<ImageLinksProps>`
     color: ${(props) => props.color};
     font-size: 0.875rem;
 
+    transition: all ease .3s;
+
     &:hover {
-      opacity: 0.8;
+      filter: brightness(1.2);
     }
   }
 `;

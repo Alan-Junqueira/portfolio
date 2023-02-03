@@ -13,6 +13,7 @@ import { AboutMeType } from '../src/types/AboutMe';
 export const getServerSideProps: GetServerSideProps = async () => {
   const aboutMe = await fetch(
     `https://portfolio-alan-junqueira.vercel.app/api/about-me`
+    // 'http://localhost:3000/api/about-me'
   ).then((res) => res.json());
 
   return {
@@ -69,6 +70,7 @@ const Educacao = ({ aboutMe }: Props) => {
                   width={1080}
                   height={650}
                   alt={image.alt}
+                  draggable={false}
                 />
               ))}
             </Slide>
